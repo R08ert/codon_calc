@@ -14,6 +14,7 @@ def main():
 
     seqio = SequenceReader(options.inputfilename, options.outputfilename)
     seqio.read_file()
+    seqio.codon.make_codons()
 
 
 if __name__ == "__main__":
