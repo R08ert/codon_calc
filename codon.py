@@ -1,4 +1,6 @@
 __author__ = 'Laura'
+import itertools
+
 
  # CodonsDict = {'TTT': 0, 'TTC': 0, 'TTA': 0, 'TTG': 0, 'CTT': 0,
  #   'CTC': 0, 'CTA': 0, 'CTG': 0, 'ATT': 0, 'ATC': 0,
@@ -20,18 +22,27 @@ class Codon:
         self.frequency_dict = {}
         self.sequence = sequence
 
-    def make_codons(self):
-        print "Enter make codons"
-        # get first three characters of sequence (codon)
+    #creates a dictionary of codons from a sequence
+    #if the codon exists, the frequency key is incremented
+    def populate_codon_dictionary(self):
         seqiter = iter(self.sequence)
-        while seqiter != None:
+        while seqiter is not None:
             frequency = 1
-            codon = str(seqiter.next())+str(seqiter.next())+str(seqiter.next())
-            print "Created codon " + codon
-            if codon in self.frequency_dict.keys():
-                self.frequency_dict[codon] = frequency + 1
-            else:
-                self.frequency_dict = {codon: frequency }
+            try:
+                codon = str(seqiter.next())+str(seqiter.next())+str(seqiter.next())
+                if codon in self.frequency_dict.keys():
+                    self.frequency_dict[codon] = frequency + 1
+                else:
+                    self.frequency_dict = {codon: frequency }
+            except StopIteration:
+                break;
+
+    def print_codon_dictionary(self):
+        for k, v in self.frequency_dict:
+            print "Codon : " + str(v) + " frequency : " + str(k)
+
+
+
 
 
 #sequence length 3 bases to 100,000

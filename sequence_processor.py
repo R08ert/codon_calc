@@ -1,15 +1,17 @@
 __author__ = 'Laura'
 import csv
 import re
-from SequenceProcessor import Codon
+from codon import Codon
 
-class SequenceReader:
+class SequenceProcessor:
     def __init__(self, inputfilename = None, outputfilename=None):
         self.inputfile = inputfilename
         self.outputfile = outputfilename
         self.codon = None
 
-    def read_file(self):
+    #Read a delimited csv file containing sequences
+    #If input is valid, create a dictionary of codons
+    def process_sequence(self):
         with open(self.inputfile, 'rb') as csvfile:
             dialect = csv.Sniffer().sniff(csvfile.readline(),[',',';','\t'])
             csvfile.seek(0)

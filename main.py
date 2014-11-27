@@ -1,5 +1,5 @@
 from optparse import OptionParser
-from parse_file import SequenceReader
+from sequence_processor import SequenceProcessor
 
 def main():
     usage = "usage: %prog [-i] csvfile [-o] outputfilename"
@@ -12,9 +12,10 @@ def main():
     (options,args)= parser.parse_args()
 
 
-    seqio = SequenceReader(options.inputfilename, options.outputfilename)
-    seqio.read_file()
-    seqio.codon.make_codons()
+    seqio = SequenceProcessor(options.inputfilename, options.outputfilename)
+    seqio.process_sequence()
+    seqio.codon.populate_codon_dictionary()
+    seqio.codon.print_codon_dictionary()
 
 
 if __name__ == "__main__":
