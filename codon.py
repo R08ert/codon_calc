@@ -1,5 +1,6 @@
 __author__ = 'Laura'
 import itertools
+from collections import OrderedDict
 
 
  # CodonsDict = {'TTT': 0, 'TTC': 0, 'TTA': 0, 'TTG': 0, 'CTT': 0,
@@ -19,6 +20,7 @@ import itertools
 
 class Codon:
     def __init__(self, sequence = None ):
+        # self.frequency_dict = OrderedDict(None)
         self.frequency_dict = {}
         self.sequence = sequence
 
@@ -38,8 +40,10 @@ class Codon:
                 break;
 
     def identify_low_use_codon(self, threshold):
+        threshold = 1
         low_use_codons = []
-        for k, v in self.frequency_dict.itervalues():
+        for k, v in self.frequency_dict.iteritems():
+            print k, v
             if v < threshold:
                 low_use_codons.append(k)
         return low_use_codons
