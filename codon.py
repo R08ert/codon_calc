@@ -37,6 +37,13 @@ class Codon:
             except StopIteration:
                 break;
 
+    def identify_low_use_codon(self, threshold):
+        low_use_codons = []
+        for k, v in self.frequency_dict.itervalues():
+            if v < threshold:
+                low_use_codons.append(k)
+        return low_use_codons
+
     def print_codon_dictionary(self):
         for k, v in self.frequency_dict:
             print "Codon : " + str(v) + " frequency : " + str(k)

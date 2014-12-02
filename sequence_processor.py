@@ -1,7 +1,9 @@
 __author__ = 'Laura'
 import csv
 import re
+import os
 from codon import Codon
+
 
 class SequenceProcessor:
     def __init__(self, inputfilename = None, outputfilename=None):
@@ -28,3 +30,7 @@ class SequenceProcessor:
         if not re.match("^[AaGgCcTtUu]*$", sequence[0]):
             print "invalid value in sequence " + str(sequence[0])
 
+    def write_to_file(self, result):
+        if os.path.isfile(self.outputfile):
+            with open(self.outputfile,'w' ) as outputfile:
+                outputfile.write("tex") # write result here
