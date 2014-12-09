@@ -33,9 +33,12 @@ class Codon:
             try:
                 codon = str(seqiter.next())+str(seqiter.next())+str(seqiter.next())
                 if codon in self.frequency_dict.keys():
-                    self.frequency_dict[codon] = frequency + 1
+                    updatefreq = self.frequency_dict[codon]
+                    updatefreq = updatefreq + frequency
+                    self.frequency_dict[codon] = updatefreq
                 else:
-                    self.frequency_dict = {codon: frequency }
+                    self.frequency_dict[codon] = frequency
+
             except StopIteration:
                 break;
 
@@ -49,8 +52,10 @@ class Codon:
         return low_use_codons
 
     def print_codon_dictionary(self):
-        for k, v in self.frequency_dict:
-            print "Codon : " + str(v) + " frequency : " + str(k)
+        print "len: " + str(len(self.frequency_dict))
+        for k, v in self.frequency_dict.iteritems():
+            print "codon: " + str(k) + " frequency " + str(v)
+
 
 
 
