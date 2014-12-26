@@ -1,11 +1,13 @@
-__author__ = 'Laura'
-import csv
-import re
-import os
-from codon import Codon
+ __author__ = 'Laura'
+ import csv
+ import re
+ import os
+
+ from codon_calc.codon import Codon
+ from codon_mvc.models import CodonFrequency
 
 
-class SequenceProcessor:
+ class SequenceProcessor:
     def __init__(self, inputfilename = None, outputfilename=None):
         self.inputfile = inputfilename
         self.outputfile = outputfilename

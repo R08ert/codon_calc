@@ -1,5 +1,7 @@
 from optparse import OptionParser
-from sequence_processor import SequenceProcessor
+
+from codon_calc.sequence_processor import SequenceProcessor
+
 
 def main():
     usage = "usage: %prog [-i] csvfile [-o] outputfilename"
